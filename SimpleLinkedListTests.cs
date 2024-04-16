@@ -68,7 +68,7 @@ public class SimpleLinkedListTests
 		return (SimpleLinkedList<int>)constructor.Invoke(new object[]{ values });
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Single_value_initialisation()
     {
         var list = CreateSimpleLinkedList(7);
@@ -76,7 +76,7 @@ public class SimpleLinkedListTests
         Assert.Equal(7, list.Pop());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Multi_value_initialisation()
     {
         var list = CreateSimpleLinkedList(2, 1, 3);
@@ -85,7 +85,7 @@ public class SimpleLinkedListTests
         Assert.Equal(2, list.Pop());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void From_enumerable()
     {
         var list = CreateSimpleLinkedList(new[] { 11, 7, 5, 3, 2 });
