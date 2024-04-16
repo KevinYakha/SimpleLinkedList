@@ -12,7 +12,7 @@ public class SimpleLinkedListTests
         Assert.Equal(0, list.Count);
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Count_cannot_be_changed_from_the_outside()
     {
         var count = typeof(SimpleLinkedList<>).GetProperty("Count");
@@ -20,7 +20,7 @@ public class SimpleLinkedListTests
         Assert.False(count?.GetSetMethod(true).IsPublic);
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Pushing_elements_to_the_list_increases_the_count()
     {
         var list = new SimpleLinkedList<int>();
@@ -30,7 +30,7 @@ public class SimpleLinkedListTests
         Assert.Equal(2, list.Count);
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Popping_elements_from_the_list_decreases_the_count()
     {
         var list = new SimpleLinkedList<int>();
@@ -41,7 +41,7 @@ public class SimpleLinkedListTests
         Assert.Equal(1, list.Count);
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Elements_pop_back_in_lifo_order()
     {
         var list = new SimpleLinkedList<int>();
