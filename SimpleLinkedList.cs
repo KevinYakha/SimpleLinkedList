@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Xml;
 
-public class SimpleLinkedList<T>
+public class SimpleLinkedList<T> : IEnumerable
 {
     public int Count { get; private set; }
     private Node head;
@@ -43,4 +45,16 @@ public class SimpleLinkedList<T>
         return value;
         // no need to delete empty class or implement a destructor because of the garbage collector?
     }
+
+    public IEnumerator<int> GetEnumerator()
+    {
+        Node current = head;
+        for (int i = 0; i < Count; i++)
+        {
+            int value = current.value;
+            current = (Node)current.next;
+            yield return value;
+        }
+    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
