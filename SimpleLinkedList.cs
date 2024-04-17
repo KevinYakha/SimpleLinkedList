@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Transactions;
 using System.Xml;
 
-public class SimpleLinkedList<T> : IEnumerable
+public class SimpleLinkedList<T> : IEnumerable<T>
 {
     public int Count { get; private set; }
     private Node head;
@@ -46,6 +47,25 @@ public class SimpleLinkedList<T> : IEnumerable
         // no need to delete empty class or implement a destructor because of the garbage collector?
     }
 
+    public void Reverse()
+    {
+        Node[] nodes = new Node[Count];
+        Node current = head;
+        for (int i = 0; i < Count; i++)
+        {
+            nodes[i] = current;
+            current = (Node)current.next;
+        }
+
+        head = nodes[Count - 1];
+        int oldCount = Count;
+        Count = 1;
+        for (int i = oldCount - 1; i > 0; i--)
+        {
+            Push(nodes[i].value);
+        }
+    }
+
     public IEnumerator<int> GetEnumerator()
     {
         Node current = head;
@@ -57,4 +77,5 @@ public class SimpleLinkedList<T> : IEnumerable
         }
     }
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    IEnumerator<T> IEnumerable<T>.GetEnumerator() => (IEnumerator<T>)GetEnumerator();
 }

@@ -96,7 +96,7 @@ public class SimpleLinkedListTests
         Assert.Equal(11, list.Pop());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Reverse_enumerable()
     {
         var values = Enumerable.Range(1, 5).ToArray();
@@ -106,7 +106,7 @@ public class SimpleLinkedListTests
         Assert.Equal(values, reversed);
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Roundtrip()
     {
         var values = Enumerable.Range(1, 7);
